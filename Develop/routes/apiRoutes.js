@@ -1,8 +1,14 @@
 // create API routes
 const notes = require('express').Router();
-const notesData = require("../db/db.json");
+// const notesData = require("../db/db.json");
 
-// find out if i need to use the helper utils
+// use helper
+const { v4: uuidv4 } = require('uuid');
+const {
+    readFromFile,
+    readAndAppend,
+    writeToFile,
+  } = require('../helpers/fsUtils');
 
 
 // GET Route for retrieving all the notes
@@ -18,7 +24,7 @@ notes.delete('/:id', (req, res) => {
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all notes except the one with the ID provided in the URL
-      const result = json.filter((note) => note.note_id !== noteId);
+      const result = json.filter((note) => note.id !== noteId);
 
       // Save that array to the filesystem
       writeToFile('./db/db.json', result);
@@ -32,13 +38,13 @@ notes.delete('/:id', (req, res) => {
 notes.post('/', (req, res) => {
   console.log(req.body);
 
-  const { title, text, id } = req.body;
+  const { title, text } = req.body;
 
   if (req.body) {
     const newNote = {
-      title: req.body.title,
-      text: req.body.text
-      id:,
+      title,
+      text,
+      id: uuidv4 (),
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -47,6 +53,7 @@ notes.post('/', (req, res) => {
     res.error('Error in adding Note');
   }
 });
+
 
 module.exports = notes;
 
