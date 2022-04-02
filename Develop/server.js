@@ -2,11 +2,11 @@
 
 const express = require('express');
 const path = require('path');
+const api = require('./routes/index');
 // const noteData = require('./db/db')
+const app = express ();
 
 const PORT = process.env.PORT || 3001;
-
-const app = express();
 
 // Import custom middleware, "cLog"
 // app.use(clog);
