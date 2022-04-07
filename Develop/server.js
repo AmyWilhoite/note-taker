@@ -16,7 +16,7 @@ app.use(clog);
 // URL / JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', api);
+app.use('/api', api); //dont think this is working
 
 // public folder
 app.use(express.static('public'));

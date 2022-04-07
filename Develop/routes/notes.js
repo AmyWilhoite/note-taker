@@ -1,6 +1,6 @@
-// create API routes
+// create API routes for GET/POST APIs
 const notes = require('express').Router();
-// const notesData = require("../db/db.json");
+const notesData = require("../db/db.json");
 
 // use helper
 const { v4: uuidv4 } = require('uuid');
@@ -8,14 +8,16 @@ const { v4: uuidv4 } = require('uuid');
 const {
     readFromFile,
     readAndAppend,
-    writeToFile,
+    // writeToFile,
   } = require('../helpers/fsUtils');
 
 
-// GET Route for retrieving all the notes
+
+// GET Route for retrieving all the notes (should display left panel)
 notes.get('/', (req, res) => {
   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
+
 
 
 // // DELETE Route for a specific note
@@ -48,7 +50,7 @@ notes.post('/', (req, res) => {
       id: uuidv4(),  //automates id
     };
 
-    readAndAppend(newNote, '.db/db.json');
+    readAndAppend(newNote, './db/db.json');
     res.json(`Note added successfully 🚀`);
   } else {
     res.error('Error in adding Note');
