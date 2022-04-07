@@ -18,37 +18,37 @@ notes.get('/', (req, res) => {
 });
 
 
-// DELETE Route for a specific note
-notes.delete('/:id', (req, res) => {
-  const noteID = req.params.note.id;
-  removeFromFile('./db/db.json')
-    .then((data) => JSON.parse(data))
-    .then((json) => {
-      // Make a new array of all notes except the one with the ID provided in the URL
-      const result = json.filter((note) => note.id !== noteId);
+// // DELETE Route for a specific note
+// notes.delete('/:id', (req, res) => {
+//   const noteID = req.params.id;
+//   removeFromFile('./db/db.json')
+//     .then((data) => JSON.parse(data))
+//     .then((json) => {
+//       // Make a new array of all notes except the one with the ID provided in the URL
+//       const result = json.filter((note) => note.id !== noteId);
 
-      // Save that array to the filesystem
-      writeToFile('./db/db.json', result);
+//       // Save that array to the filesystem
+//       writeToFile('./db/db.json', result);
 
-      // Respond to the DELETE request
-      res.json(`Item ${noteID} has been deleted 🗑️`);
-    });
-});
+//       // Respond to the DELETE request
+//       res.json(`Item ${noteID} has been deleted 🗑️`);
+//     });
+// });
 
 // POST Route for a new note
 notes.post('/', (req, res) => {
   console.log(req.body);
-
+// destructuring assignment for request.body
   const { title, text } = req.body;
-
+// if required properties are present
   if (req.body) {
     const newNote = {
-      title,
-      text,
-      id: uuidv4(),
+      title: title,
+      text: text,
+      id: uuidv4(),  //automates id
     };
 
-    readAndAppend(newNote, './db/db.json');
+    readAndAppend(newNote, '.db/db.json');
     res.json(`Note added successfully 🚀`);
   } else {
     res.error('Error in adding Note');

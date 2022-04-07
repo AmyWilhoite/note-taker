@@ -1,18 +1,17 @@
 [
     {
-        "title":"TEST Note 1",
-        "text":"note 1",
-        "id":0
+        "title": "Test",
+        "text": "Test",
+        "id": ""
     },
     {
-        "title":"Test Note 2",
-        "text":"note 2",
-        "id":1
+        "title": "Test",
+        "text": "Test",
+        "id": ""
     },
     {
-        "title":"Test Note 3",
-        "text":"note 3",
-        "id":2
+        "title": "Test",
+        "text": "Test",
+        "id": ""
     }
 ]
-
