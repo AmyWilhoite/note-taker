@@ -1,6 +1,5 @@
 # note-taker
 
-## license 
 
 ## Description
 Geared toward small business owners who want to be able to organize their thoughts and keep track of tasks.
@@ -23,5 +22,8 @@ Geared toward small business owners who want to be able to organize their though
 ## Links
 * Deployed using Heroku: https://mysterious-sands-29258.herokuapp.com
 * Repository: https://github.com/AmyWilhoite/note-taker.git   
+
+## License
+  ![Github licence](http://img.shields.io/badge/license-MIT-blue.svg)
 
 
